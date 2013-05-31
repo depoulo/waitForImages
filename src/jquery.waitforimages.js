@@ -1,8 +1,8 @@
-/*
- * waitForImages 1.4.2
+/*!
+ * waitForImages 1.4.2 - patched by Paolo Priotto for jQuery >= 1.9 support
  * -------------------
  * Provides a callback when all images have loaded in your given selector.
- * https://github.com/alexanderdickson/waitForImages
+ * https://github.com/depoulo/waitForImages
  *
  * Copyright (c) 2013 Alex Dickson
  * Licensed under the MIT license.
@@ -39,8 +39,8 @@
         if ($.isPlainObject(arguments[0])) {
             waitForAll = arguments[0].waitForAll;
             eachCallback = arguments[0].each;
-			// This must be last as arguments[0]
-			// is aliased with finishedCallback.
+            // This must be last as arguments[0]
+            // is aliased with finishedCallback.
             finishedCallback = arguments[0].finished;
         }
 
@@ -69,7 +69,7 @@
             if (waitForAll) {
 
                 // Get all elements (including the original), as any one of them could have a background image.
-                obj.find('*').andSelf().each(function () {
+                obj.find('*').addBack('*').each(function () {
                     var element = $(this);
 
                     // If an `img` element, add it. But keep iterating in case it has a background image too.
